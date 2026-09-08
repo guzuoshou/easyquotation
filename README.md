@@ -5,14 +5,12 @@
 [![License](https://img.shields.io/github/license/shidenggui/easyquotation.svg)](https://github.com/shidenggui/easyquotation/blob/master/LICENSE)
 
 
-快速获取新浪／腾讯的全市场行情。当前 `bse` 分支保留上游接口，并按代码前缀规则支持
-北交所证券；返回字段与单位见[统一术语表](docs/terminology.md)。网络耗时取决于来源服务
-和请求范围，不作为库的稳定承诺。
+快速获取新浪/腾讯的全市场行情, 网络正常的情况下只需要 `200+ms`
 
 ### 前言
 * 获取新浪的免费实时行情
 * 获取腾讯财经的免费实时行情
-* 获取集思录的分级基金数据
+* 获取集思路的分级基金数据
 
 ### 微信群以及公众号
 
@@ -20,7 +18,7 @@
 
 ![公众号二维码](https://gitee.com/shidenggui/assets/raw/master/uPic/mp-qr.png)
 
-若二维码因 GitHub 网络无法打开，请点击[公众号二维码](https://gitee.com/shidenggui/assets/raw/master/uPic/mp-qr.png)直接打开图片。
+若二维码因 Github 网络无法打开，请点击[公众号二维码](https://gitee.com/shidenggui/assets/raw/master/uPic/mp-qr.png)直接打开图片。
 
 ### Author
 
@@ -45,19 +43,19 @@
 
 ### 安装
 
-```bash
+```python
 pip install easyquotation
 ```
 
 也可以下载源码，然后安装
 
-```bash
+```python
 python setup.py install
 ```
 
 #### 升级
 
-```bash
+```python
 pip install easyquotation --upgrade
 ```
 
@@ -72,13 +70,13 @@ import easyquotation
 #### 选择行情
 
 ```python
-quotation = easyquotation.use('sina')  # 新浪 ['sina']，腾讯 ['tencent', 'qq']
+quotation = easyquotation.use('sina') # 新浪 ['sina'] 腾讯 ['tencent', 'qq'] 
 ```
 
 #### 获取所有股票行情
 
 ```python
-quotation.market_snapshot(prefix=True)  # key 带 sz/sh/bj 市场前缀
+quotation.market_snapshot(prefix=True) # prefix 参数指定返回的行情字典中的股票代码 key 是否带 sz/sh 前缀
 ```
 
 **return**
@@ -113,7 +111,7 @@ quotation.market_snapshot(prefix=True)  # key 带 sz/sh/bj 市场前缀
 ##### 单只股票
 
 ```
-quotation.real('162411')  # 支持直接指定前缀，如 'sh000001'、'bj920001'
+quotation.real('162411') # 支持直接指定前缀，如 'sh000001'
 ```
 
 ##### 多只股票
@@ -135,7 +133,7 @@ easyquotation.update_stock_codes()
 ```
 
 
-#### 选择 [jsl](https://www.jisilu.cn)（集思录）行情
+#### 选择 [jsl](https://www.jisilu.cn)（集思路） 行情
 
 ```
 quotation = easyquotation.use('jsl') # ['jsl']
@@ -211,7 +209,7 @@ quotation.fundarb(jsl_username, jsl_password, avolume=100, bvolume=100, ptype='p
 
 ```
 jsl_username: 集思录用户名
-jsl_password: 集思录登录密码
+jsl_password: 集思路登录密码
 avolume: A成交额，单位百万
 bvolume: B成交额，单位百万
 ptype: 溢价计算方式，price=现价，buy=买一，sell=卖一
@@ -348,7 +346,7 @@ quotation.etfindex(index_id="", min_volume=0, max_discount=None, min_discount=No
 ```
 
 
-##### 分时图
+##### 分数图
 
 
 *[腾讯分时图地址](http://data.gtimg.cn/flashdata/hushen/minute/sz000001.js)*
@@ -378,7 +376,7 @@ data = quotation.real(['603828'], prefix=True)
 }
 ```
 
-##### 港股日 K 线图
+##### 港股日k线图
 *[腾讯日k线图](http://web.ifzq.gtimg.cn/appstock/app/hkfqkline/get?_var=kline_dayqfq&param=hk00700,day,,,350,qfq&r=0.7773272375526847)*
 
 ```python
@@ -403,7 +401,7 @@ print(data)
 }
 ```
 
-##### 腾讯港股实时行情
+##### 腾讯港股时时行情 
 *[腾讯控股时时行情](http://sqt.gtimg.cn/utf8/q=r_hk00700)*
 ```python
 
